@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>My Portfolio</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+background:#f4f4f4;
+transition:0.5s;
+}
+
+.dark{
+background:#111;
+color:white;
+}
+
+#menu{
+
+background:blue;
+color:white;
+
+padding:20px;
+
+width:200px;
+
+margin-left:-250px;
+
+transition:1s;
+
+}
+
+#menu a{
+
+display:block;
+
+color:white;
+
+text-decoration:none;
+
+padding:10px;
+
+}
+
+.card{
+
+width:250px;
+
+margin:20px auto;
+
+padding:20px;
+
+background:white;
+
+border-radius:20px;
+
+box-shadow:0 0 10px gray;
+
+transition:0.5s;
+
+}
+
+.card:hover{
+
+transform:scale(1.1);
+
+}
+
+.dark .card{
+
+background:#333;
+
+color:white;
+
+}
+html{
+    scroll-behavior: smooth;
+}
+</style>
+
+</head>
+
+<body>
+
+<button onclick="showMenu()">
+
+☰ Menu
+
+</button>
+
+<div id="menu">
+
+<a href="#about">About</a>
+
+<a href="#projects">Projects</a>
+
+<a href="#contact">Contact</a>
+
+</div>
+
+<h1>
+
+Welcome To My Portfolio
+
+</h1>
+
+<button onclick="darkMode()">
+
+Dark Mode
+
+</button>
+
+<section id="about">
+
+<h2>About Me</h2>
+
+<p>
+
+I am learning HTML CSS and JavaScript
+
+</p>
+
+</section>
+
+<section id="projects">
+
+<h2>Projects</h2>
+
+<div class="card">
+
+<h3>Tic Tac Toe</h3>
+
+<p>Game built with HTML CSS and JavaScript</p>
+
+</div>
+
+<div class="card">
+
+<h3>Quiz App</h3>
+
+<p>Interactive quiz with score tracking</p>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<p>Email: yourgmail@gmail.com</p>
+
+</section>
+
+<script>
+
+let open=false;
+
+function showMenu(){
+
+let menu=
+
+document.getElementById(
+"menu"
+);
+
+if(open==false){
+
+menu.style.marginLeft=
+"0px";
+
+open=true;
+
+}
+
+else{
+
+menu.style.marginLeft=
+"-250px";
+
+open=false;
+
+}
+
+}
+
+function darkMode(){
+
+document.body.classList.toggle(
+"dark"
+);
+
+}
+
+</script>
+
+</body>
+
+</html>
