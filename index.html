@@ -1,257 +1,277 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>My Portfolio</title>
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Arial;
-text-align:center;
-background:#f4f4f4;
-transition:0.5s;
 }
 
-.dark{
+body{
 background:#111;
 color:white;
 }
 
-#menu{
-
-background:blue;
-color:white;
-
-padding:20px;
-
-width:200px;
-
-margin-left:-250px;
-
-transition:1s;
-
-}
-
-#menu a{
-
-display:block;
-
-color:white;
-
-text-decoration:none;
-
+.menuBtn{
+font-size:30px;
 padding:10px;
-
+cursor:pointer;
+position:fixed;
+top:10px;
+left:10px;
+z-index:1000;
 }
 
-.card{
-
-width:250px;
-
-margin:20px auto;
-
-padding:20px;
-
-background:white;
-
-border-radius:20px;
-
-box-shadow:0 0 10px gray;
-
+.sidebar{
+height:100%;
+width:0;
+position:fixed;
+left:0;
+top:0;
+background:#222;
+overflow-x:hidden;
 transition:0.5s;
-
+padding-top:60px;
 }
 
-.card:hover{
-
-transform:scale(1.1);
-
-}
-
-.dark .card{
-
-background:#333;
-
+.sidebar a{
+display:block;
+padding:15px;
 color:white;
+text-decoration:none;
+font-size:20px;
+}
 
+.sidebar a:hover{
+background:#444;
 }
-html{
-    scroll-behavior: smooth;
+
+.content{
+padding:80px 20px;
+text-align:center;
 }
+
+.section{
+display:none;
+padding:20px;
+}
+
+.active{
+display:block;
+}
+
+button{
+padding:10px;
+margin:5px;
+cursor:pointer;
+}
+
+input{
+padding:10px;
+margin:10px;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<button onclick="showMenu()">
+<div class="menuBtn" onclick="openMenu()">☰</div>
 
-☰ Menu
+<div id="sidebar" class="sidebar">
 
-</button>
+<a href="#" onclick="showSection('home')">Home</a>
 
-<div id="menu">
+<a href="#" onclick="showSection('about')">About</a>
 
-<a href="#about">About</a>
+<a href="#" onclick="showSection('calculator')">Calculator</a>
 
-<a href="#projects">Projects</a>
+<a href="#" onclick="showSection('weather')">Weather</a>
 
-<a href="#contact">Contact</a>
+<a href="#" onclick="showSection('game')">Rock Paper Scissors</a>
 
-</div>
+<a href="#" onclick="showSection('contact')">Contact</a>
 
-<h1>
-
-Welcome To My Portfolio
-
-</h1>
-
-<button onclick="darkMode()">
-
-Dark Mode
-
-</button>
-
-<section id="about">
-
-<h2>About Me</h2>
-
-<p>
-
-I am learning HTML CSS and JavaScript
-
-</p>
-
-</section>
-
-<section id="projects">
-
-<h2>
-
-Projects
-
-</h2>
-
-<div class="card">
-
-<h3>
-
-Calculator App 🧮
-
-</h3>
-
-<p>
-
-A calculator made with HTML CSS and JavaScript
-
-</p>
-
-<button>
-
-Open
-
-</button>
+<a href="#" onclick="closeMenu()">Close ✖️</a>
 
 </div>
 
-<div class="card">
 
-<h3>
+<div class="content">
 
-Quiz App ❓
+<div id="home" class="section active">
 
-</h3>
+<h1>Welcome To My Portfolio</h1>
 
-<p>
-
-Interactive quiz with score tracking
-
-</p>
-
-<button>
-
-Open
-
-</button>
+<p>Hello, I am learning web development 🚀</p>
 
 </div>
 
-<div class="card">
 
-<h3>
+<div id="about" class="section">
 
-Rock Paper Scissors 🎮
+<h1>About Me</h1>
 
-</h3>
-
-<p>
-
-Play against the computer
-
-</p>
-
-<button>
-
-Open
-
-</button>
+<p>I am building websites and learning coding.</p>
 
 </div>
 
-</section>
 
-<section id="contact">
+<div id="calculator" class="section">
 
-<h2>Contact</h2>
+<h1>Calculator</h1>
 
-<p>Email: yourgmail@gmail.com</p>
+<input id="display" readonly><br>
 
-</section>
+<button onclick="add('1')">1</button>
+<button onclick="add('2')">2</button>
+<button onclick="add('3')">3</button>
+
+<br>
+
+<button onclick="add('4')">4</button>
+<button onclick="add('5')">5</button>
+<button onclick="add('6')">6</button>
+
+<br>
+
+<button onclick="add('+')">+</button>
+<button onclick="add('-')">-</button>
+
+<button onclick="calculate()">=</button>
+
+</div>
+
+
+<div id="weather" class="section">
+
+<h1>Weather</h1>
+
+<input id="city" placeholder="Enter city">
+
+<button onclick="weather()">Check</button>
+
+<p id="weatherResult"></p>
+
+</div>
+
+
+<div id="game" class="section">
+
+<h1>Rock Paper Scissors</h1>
+
+<button onclick="play('Rock')">Rock</button>
+
+<button onclick="play('Paper')">Paper</button>
+
+<button onclick="play('Scissors')">Scissors</button>
+
+<h2 id="result">Choose one</h2>
+
+</div>
+
+
+<div id="contact" class="section">
+
+<h1>Contact Me</h1>
+
+<p>Email: myemail@example.com</p>
+
+</div>
+
+</div>
+
 
 <script>
 
-let open=false;
+function openMenu(){
 
-function showMenu(){
-
-let menu=
-
-document.getElementById(
-"menu"
-);
-
-if(open==false){
-
-menu.style.marginLeft=
-"0px";
-
-open=true;
+document.getElementById("sidebar").style.width="250px";
 
 }
 
-else{
+function closeMenu(){
 
-menu.style.marginLeft=
-"-250px";
-
-open=false;
+document.getElementById("sidebar").style.width="0";
 
 }
 
+function showSection(section){
+
+let sections=document.querySelectorAll(".section");
+
+sections.forEach(sec=>{
+
+sec.classList.remove("active");
+
+});
+
+document.getElementById(section).classList.add("active");
+
+closeMenu();
+
 }
 
-function darkMode(){
 
-document.body.classList.toggle(
-"dark"
-);
+function add(value){
+
+document.getElementById("display").value+=value;
+
+}
+
+function calculate(){
+
+let x=document.getElementById("display");
+
+x.value=eval(x.value);
+
+}
+
+
+function weather(){
+
+let city=document.getElementById("city").value;
+
+document.getElementById("weatherResult")
+.innerHTML="Weather in "+city+" : Sunny ☀️";
+
+}
+
+
+function play(user){
+
+let choices=["Rock","Paper","Scissors"];
+
+let computer=choices[Math.floor(Math.random()*3)];
+
+let result="Draw";
+
+if(
+(user=="Rock"&&computer=="Scissors")||
+(user=="Paper"&&computer=="Rock")||
+(user=="Scissors"&&computer=="Paper")
+){
+result="You Win";
+}
+
+else if(user!=computer){
+result="You Lose";
+}
+
+document.getElementById("result").innerHTML=
+"You: "+user+
+"<br>Computer: "+computer+
+"<br>"+result;
 
 }
 
 </script>
 
 </body>
-
 </html>
