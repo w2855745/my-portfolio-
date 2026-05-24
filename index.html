@@ -109,7 +109,7 @@ margin:10px;
 
 <h1>Welcome To My Portfolio</h1>
 
-<p>Hello, I am learning web development 🚀</p>
+<h2 id="typing"></h2>h2>
 
 </div>
 
@@ -298,6 +298,39 @@ document.getElementById("result").innerHTML=
 "<br>"+result;
 
 }
+    et text=
+
+"I am learning Web Development 🚀";
+
+let i=0;
+
+function typeText(){
+
+if(
+i<text.length
+){
+
+document
+.getElementById(
+"typing"
+)
+
+.innerHTML +=
+
+text.charAt(i);
+
+i++;
+
+setTimeout(
+typeText,
+100
+);
+
+}
+
+}
+
+typeText();
 
 </script>
 
