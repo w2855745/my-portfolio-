@@ -197,6 +197,17 @@ transform:scale(3);
 <h1>Welcome To My Portfolio</h1>
 
 <h2 id="typing"></h2>
+    <h3>
+
+Visitors:
+
+<span id="count">
+
+0
+
+</span>
+
+</h3>
 
 </div>
 
@@ -495,6 +506,38 @@ dot.remove();
 }
 
 );
+    let count=
+
+localStorage.getItem(
+"visits"
+);
+
+if(
+count==null
+){
+
+count=0;
+
+}
+
+count++;
+
+localStorage.setItem(
+
+"visits",
+
+count
+
+);
+
+document
+.getElementById(
+"count"
+)
+
+.innerHTML=
+
+count;
 
 </script>
     <div id="trail"></div>
