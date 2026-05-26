@@ -126,6 +126,43 @@ transform:translateY(-100px);
 }
 
 }
+    .dot{
+
+position:fixed;
+
+width:10px;
+
+height:10px;
+
+border-radius:50%;
+
+background:cyan;
+
+pointer-events:none;
+
+animation:fade 1s forwards;
+
+}
+
+@keyframes fade{
+
+0%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:scale(3);
+
+}
+
+}
 </style>
 
 </head>
@@ -417,8 +454,50 @@ circle
 );
 
 }
+    document.addEventListener(
+
+"mousemove",
+
+function(e){
+
+let dot=
+
+document.createElement(
+"div"
+);
+
+dot.classList.add(
+"dot"
+);
+
+dot.style.left=
+e.clientX+"px";
+
+dot.style.top=
+e.clientY+"px";
+
+document.body.appendChild(
+dot
+);
+
+setTimeout(
+
+function(){
+
+dot.remove();
+
+},
+
+1000
+
+);
+
+}
+
+);
 
 </script>
+    <div id="trail"></div>
 
 </body>
 </html>
