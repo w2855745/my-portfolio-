@@ -227,6 +227,15 @@ opacity:0;
 }
 
 }
+    .card{
+
+transition:
+transform 0.2s;
+
+transform-style:
+preserve-3d;
+
+}
 </style>
 
 </head>
@@ -804,6 +813,81 @@ c.remove();
 }
 
 }
+    let cards=
+
+document.querySelectorAll(
+".card"
+);
+
+cards.forEach(
+
+function(card){
+
+card.addEventListener(
+
+"mousemove",
+
+function(e){
+
+let rect=
+
+card.getBoundingClientRect();
+
+let x=
+
+e.clientX-
+rect.left;
+
+let y=
+
+e.clientY-
+rect.top;
+
+let rotateX=
+
+-(y-
+rect.height/2)
+/10;
+
+let rotateY=
+
+(x-
+rect.width/2)
+/10;
+
+card.style.transform=
+
+"rotateX("+
+
+rotateX+
+
+"deg) rotateY("+
+
+rotateY+
+
+"deg)";
+
+}
+
+);
+
+card.addEventListener(
+
+"mouseleave",
+
+function(){
+
+card.style.transform=
+
+"rotateX(0deg) rotateY(0deg)";
+
+}
+
+);
+
+}
+
+);
 
 </script>
     <div id="trail"></div>
